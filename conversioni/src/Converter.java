@@ -2,8 +2,9 @@ public class Converter {
     
 
     public String decToHex(long number){
-        if(number/16 == 0) return Long.toHexString(number%16).toUpperCase();
-        return decToHex(number/16) + Long.toHexString(number%16).toUpperCase();
+        return number/16 == 0 ? Long.toHexString(number%16).toUpperCase() : decToHex(number/16) + Long.toHexString(number%16).toUpperCase();
+        //if(number/16 == 0) return Long.toHexString(number%16).toUpperCase();
+        //return decToHex(number/16) + Long.toHexString(number%16).toUpperCase();
     }
     public String hexToDec(String number){
         number = number.toUpperCase();  
@@ -17,13 +18,15 @@ public class Converter {
         return Long.toString(val);  
     }
     public String decToBin(long number){
-        if(number/2 == 0) return 0 + Long.toBinaryString(number%2);
-        return decToBin(number/2) + Long.toBinaryString(number%2);
+        return number/2 == 0 ? 0 + Long.toBinaryString(number%2) : decToBin(number/2) + Long.toBinaryString(number%2);
+        //if(number/2 == 0) return 0 + Long.toBinaryString(number%2);
+        //return decToBin(number/2) + Long.toBinaryString(number%2);
     }
     public String binToDec(String number){
-        if(number == "") return "0";
-        return Long.toString(Long.parseLong(number.substring(0, 1)) * (long)Math.pow(2, number.length()-1)
-         + Long.parseLong(binToDec(number.substring(1))));
+        return number == "" ? "0" : Long.toString(Long.parseLong(number.substring(0, 1)) * (long)Math.pow(2, number.length()-1) + Long.parseLong(binToDec(number.substring(1))));
+        //if(number == "") return "0";
+        //return Long.toString(Long.parseLong(number.substring(0, 1)) * (long)Math.pow(2, number.length()-1)
+        // + Long.parseLong(binToDec(number.substring(1))));
     }
     public String hexToBin(String number){
         return decToBin(Long.parseLong(hexToDec(number)));
